@@ -10,7 +10,12 @@ const features = [
 ];
 
 const reducer = (state = features, action) => {
-	return state;
+	switch (action.type) {
+		case 'DELETE_FEATURE':
+			return [...features.filter(f => f !== action.payload)];
+		default:
+			return state;
+	}
 }
 
 const store = createStore(reducer);

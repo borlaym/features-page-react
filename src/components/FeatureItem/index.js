@@ -8,6 +8,7 @@ class FeatureItem extends Component {
 				<td>{this.props.description}</td>
 				<td>{this.props.type}</td>
 				<td>{this.props.enabled + ''}</td>
+				<td onClick={this.props.onDelete}>DELETE</td>
 			</tr>
 		);
 	}
