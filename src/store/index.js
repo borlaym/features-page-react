@@ -12,7 +12,7 @@ const features = [
 const reducer = (state = features, action) => {
 	switch (action.type) {
 		case 'DELETE_FEATURE':
-			return [...features.filter(f => f !== action.payload)];
+			return [...state.filter(f => f !== action.payload)];
 		default:
 			return state;
 	}
