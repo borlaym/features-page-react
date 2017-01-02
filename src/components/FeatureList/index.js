@@ -25,6 +25,13 @@ class FeatureList extends Component {
 		return (
 			<table>
 				<tbody>
+					<tr>
+						<td>Name</td>
+						<td>Description</td>
+						<td>Type</td>
+						<td>Enabled</td>
+						<td>Actions</td>
+					</tr>
 					{this.getItems()}
 				</tbody>
 			</table>
