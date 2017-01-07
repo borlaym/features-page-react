@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './Main.css';
-import FeatureList from '../../containers/FeatureList';
+import NavBar from '../../components/NavBar';
 
 class Main extends Component {
   render() {
     return (
       <div className="Main">
-        <FeatureList />
+				<NavBar />
+				{this.props.children}
       </div>
     );
   }
