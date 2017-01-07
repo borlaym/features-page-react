@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
 import store from '../../store';
 import FeatureItem from '../../components/FeatureItem';
+import { connect } from 'react-redux';
+import deleteFeature from '../../actions/Features/delete';
 
 class FeatureList extends Component {
-	componentDidMount() {
-		store.subscribe(this.forceUpdate.bind(this));
-	}
-	onDelete(item) {
-		store.dispatch({
-			type: 'DELETE_FEATURE',
-			payload: item
-		});
-	}
 	getItems() {
-		return store.getState().map(item => (
+		return this.props.features.map(item => (
 			<FeatureItem
 				{...item}
-				onDelete={this.onDelete.bind(this, item)}
+				onDelete={this.props.onDelete.bind(this, item)}
 				key={item.name}
 			/>
 		));
@@ -39,4 +32,18 @@ class FeatureList extends Component {
 	}
 }
 
-export default FeatureList;
+const mapStateToProps = state => {
+	return {
+		features: state
+	}
+};
+const mapDispatchToProps = dispatch => {
+	return {
+		onDelete: item => dispatch(deleteFeature(item))
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(FeatureList);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Main.css';
-import FeatureList from '../../components/FeatureList';
+import FeatureList from '../../containers/FeatureList';
 
 class Main extends Component {
   render() {
