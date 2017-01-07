@@ -8,19 +8,28 @@ class FeatureItemEditable extends Component {
 			return (<h1>Add feature</h1>);
 		}
 	}
+	onSave() {
+		this.props.onSave({
+			id: this.props.id,
+			name: this.refs.name.value,
+			description: this.refs.description.value,
+			type: this.refs.type.value,
+			enabled: this.refs.enabled.value
+		});
+	}
 	render() {
 		return (
 			<div>
 				{this.getHeader()}
 				<p>Name</p>
-				<p><input readOnly type='text' value={this.props.name} /></p>
+				<p><input type='text' defaultValue={this.props.name} ref='name'/></p>
 				<p>Description</p>
-				<p><input readOnly type='text' value={this.props.description} /></p>
+				<p><input type='text' defaultValue={this.props.description} ref='description'/></p>
 				<p>Type</p>
-				<p><input readOnly type='text' value={this.props.type} /></p>
+				<p><input type='text' defaultValue={this.props.type} ref='type'/></p>
 				<p>Enabled</p>
-				<p><input readOnly type='checkbox' checked={this.props.enabled} /></p>
-				<button onClick={this.props.onSave}>Save</button>
+				<p><input type='checkbox' defaultChecked={this.props.enabled} ref='enabled'/></p>
+				<button onClick={this.onSave.bind(this)}>Save</button>
 			</div>
 		);
 	}

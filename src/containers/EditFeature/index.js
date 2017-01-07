@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import store from '../../store';
 import FeatureItemEditable from '../../components/FeatureItemEditable';
 import { connect } from 'react-redux';
-import deleteFeature from '../../actions/Features/delete';
+import editFeature from '../../actions/Features/edit';
 
 class EditFeature extends Component {
 	getFeature() {
@@ -22,7 +22,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
 	return {
-		onSave: item => dispatch(deleteFeature(item))
+		onSave: item => dispatch(editFeature(item))
 	};
 };
 
