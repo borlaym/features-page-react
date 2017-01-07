@@ -15,7 +15,6 @@ const reducer = (state = features, action) => {
 			return [...state.filter(f => f !== action.payload)];
 		case 'EDIT_FEATURE':
 			const item = state.find(f => f.id === action.payload.id);
-			console.log(item);
 			const index = state.indexOf(item);
 			return [
 				...state.slice(0, index),
