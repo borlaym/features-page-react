@@ -8,7 +8,7 @@ const reducer = (state = false, action) => {
 		case 'RESET_FEATGET_FEATURE_FAILED':
 			return false;
 		default:
-			return false;
+			return state;
 	}
 }
 

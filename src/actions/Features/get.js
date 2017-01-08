@@ -2,7 +2,10 @@ import FeaturesAPI from '../../api/Features';
 
 const actions = {
 	getAllFeatures: () => {
-		return dispatch => {
+		return (dispatch, getState) => {
+			if (getState().cached) {
+				return;
+			}
 			dispatch({
 				type: 'GET_ALL_FEATURES_REQUEST'
 			});
@@ -11,6 +14,7 @@ const actions = {
 					type: 'RESET_FEATURES',
 					payload: response
 				});
+				dispatch({ type: 'FEATURES_DOWNLOADED' });
 			}).catch(response => {
 				dispatch({
 					type: 'GET_ALL_FEATURES_FAILED',
@@ -21,6 +25,9 @@ const actions = {
 	},
 	getFeature: (id) => {
 		return (dispatch, getState) => {
+			if (getState().cached) {
+				return;
+			}
 			dispatch({
 				type: 'GET_FEATURE_REQUEST'
 			});
