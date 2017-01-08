@@ -12,8 +12,8 @@ const API = {
 	getAll: () => new Promise(resolve => {
 		setTimeout(resolve.bind(null, features), 500)
 	}),
-	getById: id => Promise(resolve => {
-		const item = features.find(f => f.id === id);
+	getById: id => new Promise(resolve => {
+		const item = features.find(f => f.id === Number(id));
 		setTimeout(resolve.bind(null, item), 500)
 	}),
 };

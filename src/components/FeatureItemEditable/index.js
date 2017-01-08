@@ -17,6 +17,12 @@ class FeatureItemEditable extends Component {
 			enabled: this.refs.enabled.checked
 		});
 	}
+	componentWillReceiveProps(nextProps) {
+		this.refs.name.value = nextProps.name;
+		this.refs.description.value = nextProps.description;
+		this.refs.type.value = nextProps.type;
+		this.refs.enabled.value = nextProps.enabled;
+	}
 	render() {
 		return (
 			<div>

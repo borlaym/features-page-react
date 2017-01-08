@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import store from '../../store';
 import FeatureItemEditable from '../../components/FeatureItemEditable';
 import { connect } from 'react-redux';
 import editFeature from '../../actions/Features/edit';
+import actions from '../../actions/Features/get';
 
 class EditFeature extends Component {
 	getFeature() {
@@ -13,6 +13,9 @@ class EditFeature extends Component {
 			<FeatureItemEditable {...this.getFeature()} onSave={this.props.onSave} />
 		);
 	}
+	componentDidMount() {
+		this.props.dispatch(actions.getFeature(this.props.id));
+	}
 }
 
 const mapStateToProps = state => {
@@ -22,7 +25,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
 	return {
-		onSave: item => dispatch(editFeature(item))
+		onSave: item => dispatch(editFeature(item)),
+		dispatch
 	};
 };
 

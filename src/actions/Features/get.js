@@ -21,7 +21,6 @@ const actions = {
 	},
 	getFeature: (id) => {
 		return (dispatch, getState) => {
-			console.log(getState());
 			dispatch({
 				type: 'GET_FEATURE_REQUEST'
 			});
@@ -30,7 +29,7 @@ const actions = {
 					type: 'RESET_FEATURES',
 					payload: [response]
 				});
-			}).fail(response => {
+			}).catch(response => {
 				dispatch({
 					type: 'GET_FEATURE_FAILED',
 					payload: response
