@@ -21,6 +21,14 @@ const reducer = (state = features, action) => {
 				{ ...action.payload },
 				...state.slice(index + 1)
 			]
+		case 'ADD_FEATURE':
+			return [
+				...state,
+				{
+					id: Math.floor(Math.random() * 10000000),
+					...action.payload
+				}
+			]
 		default:
 			return state;
 	}
