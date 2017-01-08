@@ -16,6 +16,9 @@ class FeatureList extends Component {
 		));
 	}
 	render() {
+		if (this.props.loading) {
+			return (<p>Loading...</p>);
+		}
 		return (
 			<table>
 				<tbody>
@@ -38,7 +41,8 @@ class FeatureList extends Component {
 
 const mapStateToProps = state => {
 	return {
-		features: state
+		features: state.features,
+		loading: state.loading
 	}
 };
 const mapDispatchToProps = dispatch => {

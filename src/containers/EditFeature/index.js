@@ -9,6 +9,9 @@ class EditFeature extends Component {
 		return this.props.features.find(f => f.id === Number(this.props.id));
 	}
 	render() {
+		if (this.props.loading) {
+			return (<p>Loading...</p>);
+		}
 		return (
 			<FeatureItemEditable {...this.getFeature()} onSave={this.props.onSave} />
 		);
@@ -20,7 +23,8 @@ class EditFeature extends Component {
 
 const mapStateToProps = state => {
 	return {
-		features: state
+		features: state.features,
+		loading: state.loading
 	}
 };
 const mapDispatchToProps = dispatch => {
