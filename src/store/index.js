@@ -25,8 +25,8 @@ const reducer = (state = features, action) => {
 			return [
 				...state,
 				{
-					id: Math.floor(Math.random() * 10000000),
-					...action.payload
+					...action.payload,
+					id: Math.floor(Math.random() * 10000000)
 				}
 			]
 		default:
