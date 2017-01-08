@@ -42,7 +42,7 @@ class FeatureList extends Component {
 const mapStateToProps = state => {
 	return {
 		features: state.features,
-		loading: state.loading
+		loading: state.loading.data
 	}
 };
 const mapDispatchToProps = dispatch => {

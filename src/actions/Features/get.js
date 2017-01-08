@@ -6,9 +6,7 @@ const actions = {
 			if (getState().cached) {
 				return;
 			}
-			dispatch({
-				type: 'GET_ALL_FEATURES_REQUEST'
-			});
+			dispatch({ type: 'GET_ALL_FEATURES_REQUEST' });
 			FeaturesAPI.getAll().then(response => {
 				dispatch({
 					type: 'RESET_FEATURES',
@@ -28,9 +26,7 @@ const actions = {
 			if (getState().cached) {
 				return;
 			}
-			dispatch({
-				type: 'GET_FEATURE_REQUEST'
-			});
+			dispatch({ type: 'GET_FEATURE_REQUEST' });
 			FeaturesAPI.getById(id).then(response => {
 				dispatch({
 					type: 'RESET_FEATURES',

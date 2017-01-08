@@ -35,7 +35,7 @@ class FeatureItemEditable extends Component {
 				<p><input type='text' defaultValue={this.props.type} ref='type'/></p>
 				<p>Enabled</p>
 				<p><input type='checkbox' defaultChecked={this.props.enabled} ref='enabled'/></p>
-				<button onClick={this.onSave.bind(this)}>Save</button>
+				<button onClick={this.onSave.bind(this)} disabled={this.props.disabled}>Save</button>
 			</div>
 		);
 	}

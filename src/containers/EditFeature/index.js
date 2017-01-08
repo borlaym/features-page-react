@@ -13,7 +13,7 @@ class EditFeature extends Component {
 			return (<p>Loading...</p>);
 		}
 		return (
-			<FeatureItemEditable {...this.getFeature()} onSave={this.props.onSave} />
+			<FeatureItemEditable {...this.getFeature()} onSave={this.props.onSave} disabled={this.props.editLoading} />
 		);
 	}
 	componentDidMount() {
@@ -24,7 +24,8 @@ class EditFeature extends Component {
 const mapStateToProps = state => {
 	return {
 		features: state.features,
-		loading: state.loading
+		loading: state.loading.data,
+		editLoading: state.loading.editing
 	}
 };
 const mapDispatchToProps = dispatch => {

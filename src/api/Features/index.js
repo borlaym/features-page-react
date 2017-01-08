@@ -16,6 +16,22 @@ const API = {
 		const item = features.find(f => f.id === Number(id));
 		setTimeout(resolve.bind(null, item), 500)
 	}),
+	edit: item => new Promise(resolve => {
+		const inDB = features.find(f => f.id === item.id);
+		const index = features.indexOf(inDB);
+		features[index] = item;
+		setTimeout(resolve, 500)
+	}),
+	add: item => new Promise(resolve => {
+		features.push(item);
+		setTimeout(resolve, 500);
+	}),
+	delete: item => new Promise(resolve => {
+		const inDB = features.find(f => f.id === item.id);
+		const index = features.indexOf(inDB);
+		features.splice(index, 0);
+		setTimeout(resolve, 500);
+	})
 };
 
 export default API;
