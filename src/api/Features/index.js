@@ -23,6 +23,7 @@ const API = {
 		setTimeout(resolve, 500)
 	}),
 	add: item => new Promise(resolve => {
+		item.id = Math.floor(Math.random() * 10000000);
 		features.push(item);
 		setTimeout(resolve, 500);
 	}),

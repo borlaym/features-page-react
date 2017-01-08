@@ -1,7 +1,8 @@
 const reducer = (state = {
 	data: false,
 	editing: false,
-	deleting: false
+	deleting: false,
+	adding: false
 }, action) => {
 	switch (action.type) {
 		case 'GET_ALL_FEATURES_REQUEST':
@@ -17,6 +18,8 @@ const reducer = (state = {
 				...state,
 				data: false
 			};
+
+
 		case 'EDITING_REQUEST':
 			return {
 				...state,
@@ -28,6 +31,21 @@ const reducer = (state = {
 				...state,
 				editing: false
 			};
+
+
+		case 'ADD_REQUEST':
+			return {
+				...state,
+				adding: true
+			};
+		case 'ADD_FINISHED':
+		case 'ADD_FAILED':
+			return {
+				...state,
+				adding: false
+			};
+
+
 		default:
 			return state;
 	}
