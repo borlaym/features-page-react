@@ -1,16 +1,10 @@
-import { createStore } from 'redux';
-const features = [
-	{id: 0, name: 'superuser', description: 'Superuser switch', type: 'alpha', enabled: true},
-	{id: 1, name: 'no3rdparty', description: 'Disable 3rd party code', type: 'beta', enabled: true},
-	{id: 2, name: 'test1', description: 'test #1', type: 'beta', enabled: true},
-	{id: 3, name: 'test2', description: 'test #2', type: 'alpha', enabled: true},
-	{id: 4, name: 'test3', description: 'test #3', type: 'beta', enabled: false},
-	{id: 5, name: 'test4', description: 'test #4', type: 'alpha', enabled: true},
-	{id: 6, name: 'test5', description: 'test #5', type: 'alpha', enabled: false}
-];
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
-const reducer = (state = features, action) => {
+const reducer = (state = [], action) => {
 	switch (action.type) {
+		case 'RESET_FEATURES':
+			return [...action.payload];
 		case 'DELETE_FEATURE':
 			return [...state.filter(f => f !== action.payload)];
 		case 'EDIT_FEATURE':
@@ -34,6 +28,9 @@ const reducer = (state = features, action) => {
 	}
 }
 
-const store = createStore(reducer);
+const store = createStore(
+	reducer,
+	applyMiddleware(thunk)
+);
 
 export default store;

@@ -3,6 +3,7 @@ import store from '../../store';
 import FeatureItem from '../../components/FeatureItem';
 import { connect } from 'react-redux';
 import deleteFeature from '../../actions/Features/delete';
+import actions from '../../actions/Features/get';
 
 class FeatureList extends Component {
 	getItems() {
@@ -30,6 +31,9 @@ class FeatureList extends Component {
 			</table>
 		);
 	}
+	componentDidMount() {
+		this.props.dispatch(actions.getAllFeatures())
+	}
 }
 
 const mapStateToProps = state => {
@@ -39,7 +43,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
 	return {
-		onDelete: item => dispatch(deleteFeature(item))
+		onDelete: item => dispatch(deleteFeature(item)),
+		dispatch
 	};
 };
 
