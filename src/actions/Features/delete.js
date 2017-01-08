@@ -7,7 +7,7 @@ export default item => {
 			payload: item
 		});
 		dispatch({ type: 'DELETING_REQUEST' });
-		FeaturesAPI.edit(item).then(response => {
+		FeaturesAPI.delete(item).then(response => {
 			dispatch({ type: 'DELETING_FINISHED' });
 		}).catch(response => {
 			dispatch({
@@ -17,6 +17,10 @@ export default item => {
 					originalValue: item
 				}
 			});
+			dispatch({
+				type: 'ADD_FEATURE',
+				payload: item
+			})
 		});
 	}
 };

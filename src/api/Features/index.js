@@ -9,25 +9,26 @@ const features = [
 ];
 
 const API = {
-	getAll: () => new Promise(resolve => {
+	getAll: () => new Promise((resolve, reject) => {
 		setTimeout(resolve.bind(null, features), 500)
 	}),
-	getById: id => new Promise(resolve => {
+	getById: id => new Promise((resolve, reject) => {
 		const item = features.find(f => f.id === Number(id));
 		setTimeout(resolve.bind(null, item), 500)
 	}),
-	edit: item => new Promise(resolve => {
+	edit: item => new Promise((resolve, reject) => {
 		const inDB = features.find(f => f.id === item.id);
 		const index = features.indexOf(inDB);
 		features[index] = item;
 		setTimeout(resolve, 500)
 	}),
-	add: item => new Promise(resolve => {
+	add: item => new Promise((resolve, reject) => {
 		item.id = Math.floor(Math.random() * 10000000);
 		features.push(item);
 		setTimeout(resolve, 500);
 	}),
-	delete: item => new Promise(resolve => {
+	delete: item => new Promise((resolve, reject) => {
+		// return setTimeout(reject, 500);
 		const inDB = features.find(f => f.id === item.id);
 		const index = features.indexOf(inDB);
 		features.splice(index, 0);
