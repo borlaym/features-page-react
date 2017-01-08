@@ -46,6 +46,19 @@ const reducer = (state = {
 			};
 
 
+		case 'DELETING_REQUEST':
+			return {
+				...state,
+				deleting: true
+			};
+		case 'DELETING_FINISHED':
+		case 'DELETING_FAILED':
+			return {
+				...state,
+				deleting: false
+			};
+
+
 		default:
 			return state;
 	}
